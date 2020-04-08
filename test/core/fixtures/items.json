@@ -1,0 +1,18 @@
+[
+  {
+    "pdfLinks": [{"title": "title", "link": "link"}],
+    "htmlTags": [
+      {"title": "title", "html": "htmlCode"}
+    ],
+    "title": "title"
+  },
+  {
+   
+    "pdfLinks": [{"title": "title", "link": "link"}],
+    "htmlTags": [
+      {"title": "title", "html": "htmlCode"}
+    ],
+    "title": "title"
+  }
+]
+
