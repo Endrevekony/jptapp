@@ -1,16 +1,16 @@
-part of 'theme_bloc.dart';
+import 'package:equatable/equatable.dart';
+import 'package:flutter/material.dart';
+import 'package:meta/meta.dart';
 
-abstract class ThemeState extends Equatable {
-  const ThemeState();
-}
+@immutable
+class ThemeState extends Equatable {
+  final ThemeData themeData;
 
-class ThemeInitial extends ThemeState {
+  ThemeState({
+    @required this.themeData,
+  });
+
   @override
-  List<Object> get props => [];
-}
-
-class ThemeChange extends ThemeEvent {
-  final AppTheme theme;
-
-  ThemeChange({@required this.theme});
+  // TODO: implement props
+  List<Object> get props => ([themeData]);
 }

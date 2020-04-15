@@ -10,7 +10,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:1082876167398:android:9276f9c068ec9bef9ee727",
         "android_client_info": {
-          "package_name": "jpt.app"
+          "package_name": "com.example.jpt_app"
         }
       },
       "oauth_client": [

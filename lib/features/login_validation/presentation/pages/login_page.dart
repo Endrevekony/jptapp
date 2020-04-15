@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:jptapp/core/constants/colors.dart';
 import 'package:jptapp/features/login_validation/presentation/widgets/widgets.dart';
 import 'package:flutter/widgets.dart';
 
@@ -12,7 +11,6 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: MyColors.whiteBackgroundColor,
       body: Center(
         child: ListView(
           shrinkWrap: true,

@@ -1,3 +1,8 @@
 {
-  "loginString": "Uloguj se"
+  "login": "Uloguj se",
+  "password": "Lozinka",
+  "settings": "Podešavanje",
+  "documents": "Dokumenti",
+  "darkmode": "Crna tema",
+  "language": "Jezik"
 }

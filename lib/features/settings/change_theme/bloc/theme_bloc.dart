@@ -1,19 +1,17 @@
 import 'dart:async';
-
 import 'package:bloc/bloc.dart';
-import 'package:equatable/equatable.dart';
-
-part 'theme_event.dart';
-part 'theme_state.dart';
+import '../change_theme.dart';
+import './bloc.dart';
 
 class ThemeBloc extends Bloc<ThemeEvent, ThemeState> {
   @override
-  ThemeState get initialState => ThemeInitial();
+  ThemeState get initialState =>
+      ThemeState(themeData: appThemeData[AppTheme.Light]);
 
   @override
-  Stream<ThemeState> mapEventToState(
-    ThemeEvent event,
-  ) async* {
-    // TODO: implement mapEventToState
+  Stream<ThemeState> mapEventToState(ThemeEvent event,) async* {
+    if (event is ThemeChanged) {
+      yield ThemeState(themeData: appThemeData[event.theme]);
+    }
   }
 }
