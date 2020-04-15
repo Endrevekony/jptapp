@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1082876167398",
+    "firebase_url": "https://jpt-app.firebaseio.com",
+    "project_id": "jpt-app",
+    "storage_bucket": "jpt-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1082876167398:android:9276f9c068ec9bef9ee727",
+        "android_client_info": {
+          "package_name": "jpt.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1082876167398-o2lhdi8t0vegige848u69omtjk13bh8t.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA1y0CVIoaNLcXn2DeL2ZYh5HirygqH5yg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1082876167398-o2lhdi8t0vegige848u69omtjk13bh8t.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
