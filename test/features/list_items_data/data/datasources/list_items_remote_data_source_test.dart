@@ -1,12 +1,12 @@
 import 'dart:convert';
 
-import 'package:http/http.dart' as http;
 import 'package:flutter_test/flutter_test.dart';
+import 'package:http/http.dart' as http;
 import 'package:jptapp/core/errors/exceptions.dart';
 import 'package:jptapp/features/list_items_data/data/datasources/list_items_remote_data_source.dart';
 import 'package:jptapp/features/list_items_data/data/models/list_items_data_model.dart';
-import 'package:mockito/mockito.dart';
 import 'package:matcher/matcher.dart';
+import 'package:mockito/mockito.dart';
 
 import '../../../../core/fixtures/fixture_reader.dart';
 
@@ -72,7 +72,7 @@ group('getListItemsData', () {
       // act
       final call = dataSource.getListItemData();
       // assert
-      expect(() => call, throwsA(TypeMatcher<ServerException>()));
+      expect(() => call, throwsA(const TypeMatcher<ServerException>()));
     },
   );
 });

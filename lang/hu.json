@@ -1,8 +1,11 @@
 {
   "login": "Bejelentkezés",
+  "logout": "Kijelentkezés",
   "password": "Jelszó",
   "settings": "Beállitások",
   "documents": "Dokumentumok",
-  "darkmode": "Sőtét mód",
-  "language": "Nyelv"
+  "themes": "Téma",
+  "languages": "Nyelv",
+  "dark": "Sötét",
+  "light": "Világos"
 }

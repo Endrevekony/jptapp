@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:convert';
 import 'dart:ui';
+
 import 'package:flutter/services.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -14,7 +15,8 @@ class GlobalTranslations {
   VoidCallback _onLocaleChangedCallback;
 
 
-  Iterable<Locale> supportedLocales() => _supportedLanguages.map<Locale>((lang) => new Locale(lang, ''));
+  Iterable<Locale> supportedLocales() =>
+      _supportedLanguages.map<Locale>((lang) => Locale(lang, ''));
 
   String text(String key) {
     return (_localizedValues == null || _localizedValues[key] == null) ? '** $key not found' : _localizedValues[key];
@@ -47,7 +49,8 @@ class GlobalTranslations {
     }
     _locale = Locale(language, "");
 
-    String jsonContent = await rootBundle.loadString("lang/${_locale.languageCode}.json");
+    String jsonContent = await rootBundle.loadString(
+        "lang/${_locale.languageCode}.json");
     _localizedValues = jsonDecode(jsonContent);
 
     if (saveInPrefs){
@@ -76,11 +79,12 @@ class GlobalTranslations {
     return prefs.setString(_storageKey + name, value);
   }
 
-  static final GlobalTranslations _translations = new GlobalTranslations._internal();
+  static final GlobalTranslations _translations = GlobalTranslations
+      ._internal();
   factory GlobalTranslations() {
     return _translations;
   }
   GlobalTranslations._internal();
 }
 
-GlobalTranslations allTranslations = new GlobalTranslations();
+GlobalTranslations allTranslations = GlobalTranslations();

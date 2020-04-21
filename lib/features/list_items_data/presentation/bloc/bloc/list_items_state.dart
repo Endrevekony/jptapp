@@ -22,4 +22,5 @@ class Error extends ListItemsState {
   Error({@required this.message});
   @override
   List<Object> get props => [message];
+
 }

@@ -1,8 +1,11 @@
 {
   "login": "Uloguj se",
+  "logout": "Izloguj se",
   "password": "Lozinka",
   "settings": "Podešavanje",
   "documents": "Dokumenti",
-  "darkmode": "Crna tema",
-  "language": "Jezik"
+  "themes": "Tema",
+  "languages": "Jezik",
+  "dark": "Tamni",
+  "light": "Svetli"
 }

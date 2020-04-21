@@ -12,23 +12,27 @@ dependencies:
   # Service locator
   get_it: ^4.0.1
   # Bloc for state management
-  flutter_bloc: ^3.2.0
+  flutter_bloc: ^4.0.0
   # Value equality
   equatable: ^1.1.1
   # Functional programming thingies
   dartz: ^0.8.9
   # Remote API
   data_connection_checker: ^0.3.4
+  #Injectable
+  injectable: ^0.3.0
   #http
   http: ^0.12.0+4
   # Local cache
-  shared_preferences: ^0.5.6+3
+  shared_preferences: ^0.5.7
   #User Authentication
   firebase_auth: ^0.16.0
   #Rive animations
   flare_flutter: ^2.0.3
   #Firebase core
   firebase_core: ^0.4.4+3
+  #Freezed unions
+  freezed_annotation: ^0.7.1
   #lacalization
   flutter_localizations:
     sdk: flutter
@@ -38,6 +42,10 @@ dev_dependencies:
     sdk: flutter
 
   mockito: ^4.1.1
+  freezed: ^0.10.6
+  build_runner: ^1.8.1
+  lint: ^1.1.1
+  injectable_generator: ^0.3.4
 
 flutter:
   uses-material-design: true

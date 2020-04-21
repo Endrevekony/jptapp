@@ -1,17 +1,21 @@
 import 'package:data_connection_checker/data_connection_checker.dart';
 import 'package:get_it/get_it.dart';
+import 'package:http/http.dart' as http;
+import 'package:injectable/injectable.dart';
 import 'package:jptapp/core/platform/network_info.dart';
 import 'package:jptapp/features/list_items_data/presentation/bloc/bloc/list_items_bloc.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
 import 'features/list_items_data/data/datasources/list_items_local_data_source.dart';
 import 'features/list_items_data/data/datasources/list_items_remote_data_source.dart';
 import 'features/list_items_data/data/repositories/list_item_data_repository_impl.dart';
 import 'features/list_items_data/domain/repositories/list_items_data_repository.dart';
 import 'features/list_items_data/domain/use_cases/get_list_items_data.dart';
-import 'package:http/http.dart' as http;
+import 'injection_container.iconfig.dart';
 
 
-final sl = GetIt.instance;
+final GetIt sl = GetIt.instance;
+final GetIt getIt = GetIt.instance;
 
 void init() async{
   
@@ -55,4 +59,9 @@ void init() async{
   sl.registerLazySingleton(() => sharedPreferences);
   sl.registerLazySingleton(() => http.Client);
   sl.registerLazySingleton(() => DataConnectionChecker());
+}
+
+@injectableInit
+void configureInjection(String env) {
+  $initGetIt(getIt, environment: env);
 }

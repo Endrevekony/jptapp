@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:jptapp/core/constants/colors.dart';
 
 class LoginPageEmail extends StatefulWidget {
-  String email;
   @override
   _LoginPageEmailState createState() => _LoginPageEmailState();
 }

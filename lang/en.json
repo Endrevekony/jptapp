@@ -1,8 +1,11 @@
 {
   "login": "Log In",
+  "logout": "Log Out",
   "password": "Password",
   "settings": "Settings",
   "documents": "Documents",
-  "darkmode": "Dark mode",
-  "language": "Language"
+  "themes": "Theme",
+  "languages": "Language",
+  "dark": "Dark",
+  "light": "Light"
 }
