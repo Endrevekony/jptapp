@@ -39,7 +39,6 @@ mixin _$SignInFormEvent {
     @required Result passwordChanged(String passwordStr),
     @required Result signInWithEmailAndPasswordPressed(),
   });
-
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result emailChanged(String emailStr),
@@ -47,7 +46,6 @@ mixin _$SignInFormEvent {
     Result signInWithEmailAndPasswordPressed(),
     @required Result orElse(),
   });
-
   @optionalTypeArgs
   Result map<Result extends Object>({
     @required Result emailChanged(EmailChanged value),
@@ -56,7 +54,6 @@ mixin _$SignInFormEvent {
         Result signInWithEmailAndPasswordPressed(
             SignInWithEmailAndPasswordPressed value),
   });
-
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
     Result emailChanged(EmailChanged value),
@@ -78,7 +75,6 @@ class _$SignInFormEventCopyWithImpl<$Res>
   _$SignInFormEventCopyWithImpl(this._value, this._then);
 
   final SignInFormEvent _value;
-
   // ignore: unused_field
   final $Res Function(SignInFormEvent) _then;
 }
@@ -87,7 +83,6 @@ abstract class $EmailChangedCopyWith<$Res> {
   factory $EmailChangedCopyWith(
           EmailChanged value, $Res Function(EmailChanged) then) =
       _$EmailChangedCopyWithImpl<$Res>;
-
   $Res call({String emailStr});
 }
 
@@ -203,7 +198,6 @@ abstract class EmailChanged implements SignInFormEvent {
   const factory EmailChanged(String emailStr) = _$EmailChanged;
 
   String get emailStr;
-
   $EmailChangedCopyWith<EmailChanged> get copyWith;
 }
 
@@ -211,7 +205,6 @@ abstract class $PasswordChangedCopyWith<$Res> {
   factory $PasswordChangedCopyWith(
           PasswordChanged value, $Res Function(PasswordChanged) then) =
       _$PasswordChangedCopyWithImpl<$Res>;
-
   $Res call({String passwordStr});
 }
 
@@ -327,7 +320,6 @@ abstract class PasswordChanged implements SignInFormEvent {
   const factory PasswordChanged(String passwordStr) = _$PasswordChanged;
 
   String get passwordStr;
-
   $PasswordChangedCopyWith<PasswordChanged> get copyWith;
 }
 

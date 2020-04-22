@@ -7,5 +7,7 @@
   "themes": "Téma",
   "languages": "Nyelv",
   "dark": "Sötét",
-  "light": "Világos"
+  "light": "Világos",
+  "short_password" : "Túl rövid jelszó",
+  "invalid_email" : "Invalid e-mail cim"
 }

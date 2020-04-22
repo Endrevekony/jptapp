@@ -6,7 +6,7 @@ abstract class ListItemsState extends Equatable {
   List<Object> get props => [];
 }
 
-class Empty extends ListItemsState {}
+class NoData extends ListItemsState {}
 
 class Loading extends ListItemsState {}
 
@@ -22,5 +22,4 @@ class Error extends ListItemsState {
   Error({@required this.message});
   @override
   List<Object> get props => [message];
-
 }

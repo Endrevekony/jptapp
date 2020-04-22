@@ -7,5 +7,7 @@
   "themes": "Theme",
   "languages": "Language",
   "dark": "Dark",
-  "light": "Light"
+  "light": "Light",
+  "short_password" : "Short Password",
+  "invalid_email" : "Invalid email"
 }

@@ -30,14 +30,12 @@ mixin _$AuthFailure {
     @required Result serverError(),
     @required Result invalidEmailAndPasswordCombination(),
   });
-
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result serverError(),
     Result invalidEmailAndPasswordCombination(),
     @required Result orElse(),
   });
-
   @optionalTypeArgs
   Result map<Result extends Object>({
     @required Result serverError(ServerError value),
@@ -45,7 +43,6 @@ mixin _$AuthFailure {
         Result invalidEmailAndPasswordCombination(
             InvalidEmailAndPasswordCombination value),
   });
-
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
     Result serverError(ServerError value),
@@ -65,7 +62,6 @@ class _$AuthFailureCopyWithImpl<$Res> implements $AuthFailureCopyWith<$Res> {
   _$AuthFailureCopyWithImpl(this._value, this._then);
 
   final AuthFailure _value;
-
   // ignore: unused_field
   final $Res Function(AuthFailure) _then;
 }

@@ -4,7 +4,7 @@ description: JPT
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.2.0 <3.0.0"
+  sdk: ">=2.6.0 <3.0.0"
 
 dependencies:
   flutter:
@@ -23,6 +23,8 @@ dependencies:
   injectable: ^0.3.0
   #http
   http: ^0.12.0+4
+  #User id
+  uuid: ^2.0.4
   # Local cache
   shared_preferences: ^0.5.7
   #User Authentication
@@ -44,7 +46,6 @@ dev_dependencies:
   mockito: ^4.1.1
   freezed: ^0.10.6
   build_runner: ^1.8.1
-  lint: ^1.1.1
   injectable_generator: ^0.3.4
 
 flutter:

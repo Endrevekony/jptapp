@@ -28,7 +28,7 @@ void main() {
   final tItemDataList = ListItemsData(listData: itemData);
   test('initialState should be Empty', () {
     // assert
-    expect(bloc.initialState, equals(Empty()));
+    expect(bloc.initialState, equals(NoData()));
   });
 
   test('should get data from the use case', () async {
@@ -59,7 +59,7 @@ void main() {
           .thenAnswer((_) async => Right(tItemDataList));
       // assert later
       final expected = [
-        Empty(),
+        NoData(),
         Loading(),
         Loaded(itemDataList: tItemDataList),
       ];
@@ -77,7 +77,7 @@ void main() {
           .thenAnswer((_) async => Left(ServerFailure()));
       // assert later
       final expected = [
-        Empty(),
+        NoData(),
         Loading(),
         Error(message: ListItemsBloc.SERVER_FAILURE_MESSAGE),
       ];
@@ -95,7 +95,7 @@ void main() {
           .thenAnswer((_) async => Left(CacheFailure()));
       // assert later
       final expected = [
-        Empty(),
+        NoData(),
         Loading(),
         Error(message: ListItemsBloc.CACHE_FAILURE_MESSAGE),
       ];

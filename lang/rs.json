@@ -7,5 +7,7 @@
   "themes": "Tema",
   "languages": "Jezik",
   "dark": "Tamni",
-  "light": "Svetli"
+  "light": "Svetli",
+  "short_password" : "Kratka lozinka",
+  "invalid_email" : "Invalid e-mail adresa"
 }

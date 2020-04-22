@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:jptapp/core/constants/colors.dart';
+import 'package:jptapp/features/login_validation/presentation/pages/login_page.dart';
 import 'package:jptapp/features/settings/change_language/app_localization.dart';
 import 'package:jptapp/features/settings/change_theme/bloc/bloc.dart';
 import 'package:jptapp/features/settings/change_theme/bloc/theme_bloc.dart';
@@ -96,7 +97,10 @@ class _SettingsState extends State<Settings> {
                   color: MyColors.logOutButtonIconColor),
               title: Text(allTranslations.text('logout')),
               onTap: () {
-                //Logout
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(builder: (context) => LoginPage()),
+                );
               },
             ),
           ],

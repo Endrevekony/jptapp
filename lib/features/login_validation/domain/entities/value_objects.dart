@@ -32,3 +32,7 @@ class Password extends ValueObject<String> {
 
   const Password._(this.value);
 }
+
+abstract class IEntity {
+  UniqueId get id;
+}

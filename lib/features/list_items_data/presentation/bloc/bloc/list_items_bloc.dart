@@ -23,7 +23,7 @@ class ListItemsBloc extends Bloc<ListItemsEvent, ListItemsState> {
         getItemDataList = getItemDataList;
 
   @override
-  ListItemsState get initialState => Empty();
+  ListItemsState get initialState => NoData();
 
   @override
   Stream<ListItemsState> mapEventToState(
