@@ -30,17 +30,11 @@ class ListItemsBloc extends Bloc<ListItemsEvent, ListItemsState> {
       ListItemsEvent event,
       ) async* {
     if (event is GetDataListForItems) {
-      //////////////////////////////////////////////////////////////////
-
-
       yield Loading();
       final failureOrNot = await getItemDataList(NoParams());
       yield* _eitherLoadedOrErrorState(failureOrNot);
     }
   }
-  ///////////////////////
-
-  ///////
   Stream<ListItemsState> _eitherLoadedOrErrorState(
       Either<Failure, ListItemsData> either,
       ) async* {

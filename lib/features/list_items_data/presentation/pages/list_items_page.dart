@@ -57,6 +57,7 @@ class _ListItemsPageState extends State<ListItemsPage> {
             BlocProvider.of<ListItemsBloc>(context).add(GetDataListForItems());
             return Container();
           } else if (state is Loading) {
+            print('loading');
             return Center(
                 child: CircularProgressIndicator(),
                 );
