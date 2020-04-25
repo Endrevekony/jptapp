@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:flutter_test/flutter_test.dart';
 import 'package:http/http.dart' as http;
 import 'package:jptapp/core/errors/exceptions.dart';
@@ -22,7 +20,7 @@ void main() {
     dataSource = ListItemsRemoteDataSourceImpl(client: mockHttpClient);
     
   });
-  final tListItemsModel = listItemsDataModelFromJson(jsonDecode(fixture('items.json')));
+  final tListItemsModel = listItemsDataModelFromJson(fixture('items.json'));
 
   void setUpMockHttpClientSuccess200() {
     when(mockHttpClient.get(any, headers: anyNamed('headers'))).thenAnswer(
@@ -38,7 +36,7 @@ void main() {
 group('getListItemsData', () {
 
   test(
-    'should preform a GET request on a URL with *random* endpoint with application/json header',
+    'should preform a GET request on a URL',
     () {
       //arrange
       setUpMockHttpClientSuccess200();
@@ -46,7 +44,7 @@ group('getListItemsData', () {
       dataSource.getListItemData();
       // assert
       verify(mockHttpClient.get(
-        'http://numbersapi.com/',
+        'https://jpt-app.firebaseio.com/',
         headers: {'Content-Type': 'application/json'},
       ));
     },

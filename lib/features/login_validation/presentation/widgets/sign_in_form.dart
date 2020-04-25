@@ -105,7 +105,7 @@ class SignInForm extends StatelessWidget {
                 ),
                 onPressed: () => context.bloc<SignInFormBloc>().add(
                     const SignInFormEvent.signInWithEmailAndPasswordPressed()),
-                padding: EdgeInsets.all(12),
+                padding: const EdgeInsets.all(12),
                 color: MyColors.loginButtonColor,
                 child: Text(
                   allTranslations.text('login'),

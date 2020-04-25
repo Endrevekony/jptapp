@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+
 enum AppTheme {
-  Light,
-  Dark,
+  light,
+  dark,
 }
-final appThemeData = {
-    AppTheme.Dark: ThemeData.dark(),
-    AppTheme.Light: ThemeData.light(),
+final Map<AppTheme, ThemeData> appThemeData = {
+    AppTheme.dark: ThemeData.dark(),
+    AppTheme.light: ThemeData.light(),
   };
+
+bool selectedDark = false;

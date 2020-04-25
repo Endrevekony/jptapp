@@ -15,53 +15,43 @@ import 'injection_container.iconfig.dart';
 
 
 final GetIt sl = GetIt.instance;
-final GetIt getIt = GetIt.instance;
 
-void init() async{
-  
-  //Bloc
+Future<void> init() async {
+  // Bloc
   sl.registerFactory(
-  () => ListItemsBloc(
-      getItemDataList: sl()
-  )
+        () =>
+        ListItemsBloc(
+          getItemDataList: sl(),
+        ),
   );
+  // Use cases
   sl.registerLazySingleton(() => GetItemListData(sl()));
-
-  //repositories
+  // Repository
   sl.registerLazySingleton<ListItemsDataRepository>(
-    () => ListItemDataRepositoryImpl(
-        remoteDataSource: sl(),
-        localDataSource: sl(),
-        networkInfo: sl()
-    ),
+        () =>
+        ListItemDataRepositoryImpl(
+          localDataSource: sl(),
+          networkInfo: sl(),
+          remoteDataSource: sl(),
+        ),
   );
-
-  //datasources
+  // Data sources
   sl.registerLazySingleton<ListItemsRemoteDataSource>(
-    () => ListItemsRemoteDataSourceImpl(
-      client: sl()
-  )
+        () => ListItemsRemoteDataSourceImpl(client: sl()),
   );
-
   sl.registerLazySingleton<ListItemsLocalDataSource>(
-    () => ListItemsLocalDataSourceImpl(
-      sharedPreferences: sl()
-  )
+        () => ListItemsLocalDataSourceImpl(sharedPreferences: sl()),
   );
-
-  //core
-    sl.registerLazySingleton<NetWorkInfo>(
-    () => NetworkInfoImpl(sl())
-  );
-
-  //External
+  //! Core
+  sl.registerLazySingleton<NetWorkInfo>(() => NetworkInfoImpl(sl()));
+  //! External
   final sharedPreferences = await SharedPreferences.getInstance();
   sl.registerLazySingleton(() => sharedPreferences);
-  sl.registerLazySingleton(() => http.Client);
+  sl.registerLazySingleton(() => http.Client());
   sl.registerLazySingleton(() => DataConnectionChecker());
 }
 
 @injectableInit
 void configureInjection(String env) {
-  $initGetIt(getIt, environment: env);
+  $initGetIt(sl, environment: env);
 }

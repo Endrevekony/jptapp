@@ -25,6 +25,13 @@ class _SettingsState extends State<Settings> {
     );
   }
 
+  Widget selectedLanguageCheck(String current){
+    if (allTranslations.currentLanguage == current) {
+      return Icon(Icons.check);
+    }else{
+      return null;
+    }
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -47,20 +54,24 @@ class _SettingsState extends State<Settings> {
               leading: Icon(Icons.chrome_reader_mode),
               title: Text(allTranslations.text('themes')),
               children: <Widget>[
-                new Column(
+                Column(
                   children: <Widget>[
                     ListTile(
                       title: Text(allTranslations.text('light')),
+                      trailing: selectedDark ? null : Icon(Icons.check),
                       onTap: () {
                         BlocProvider.of<ThemeBloc>(context)
-                            .add(ThemeChanged(theme: AppTheme.Light));
+                            .add(const ThemeChanged(theme: AppTheme.light));
+                            selectedDark = false;
                       },
                     ),
                     ListTile(
                       title: Text(allTranslations.text('dark')),
+                      trailing: selectedDark ? Icon(Icons.check) : null,
                       onTap: () {
                         BlocProvider.of<ThemeBloc>(context)
-                            .add(ThemeChanged(theme: AppTheme.Dark));
+                            .add(const ThemeChanged(theme: AppTheme.dark));
+                        selectedDark = true;
                       },
                     ),
                   ],
@@ -72,26 +83,29 @@ class _SettingsState extends State<Settings> {
               title: Text(allTranslations.text('languages')),
               children: <Widget>[
                 ListTile(
-                  title: Text('English'),
+                  title: const Text('English'),
+                  trailing: selectedLanguageCheck('en'),
                   onTap: () {
                     changeLanguage(lang: 'en');
                   },
                 ),
                 ListTile(
-                  title: Text('Magyar'),
+                  title: const Text('Magyar'),
+                  trailing: selectedLanguageCheck('hu'),
                   onTap: () {
                     changeLanguage(lang: 'hu');
                   },
                 ),
                 ListTile(
-                  title: Text('Srpski'),
+                  title: const Text('Srpski'),
+                  trailing: selectedLanguageCheck('rs'),
                   onTap: () {
                     changeLanguage(lang: 'rs');
                   },
                 ),
               ],
             ),
-            SizedBox(height: 10.0),
+            const SizedBox(height: 10.0),
             ListTile(
               leading: Icon(Icons.exit_to_app,
                   color: MyColors.logOutButtonIconColor),

@@ -23,7 +23,7 @@ class ListItemDataRepositoryImpl implements ListItemsDataRepository {
   Future<Either<Failure, ListItemsData>> getListItemData() async {
     if (await networkInfo.isConnected) {
       try {
-        final remoteData =await remoteDataSource.getListItemData();
+        final remoteData = await remoteDataSource.getListItemData();
         localDataSource.cacheListItems(remoteData);
         return Right(remoteData);
       } on ServerException {

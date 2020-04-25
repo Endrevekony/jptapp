@@ -8,27 +8,28 @@ abstract class ListItemsLocalDataSource {
   Future<void> cacheListItems(ListItemsDataModel itemsToCache);
 }
 
-const cachedItems = 'CACHED_ITEMS'
-;
+const cachedItems = 'CACHED_ITEMS';
+
 class ListItemsLocalDataSourceImpl implements ListItemsLocalDataSource {
   final SharedPreferences sharedPreferences;
 
   ListItemsLocalDataSourceImpl({@required this.sharedPreferences});
-  
+
   @override
   Future<ListItemsDataModel> getLastListItems() {
     final jsonString = sharedPreferences.getString(cachedItems);
-    if(jsonString != null){
+    if (jsonString != null) {
       return Future.value(listItemsDataModelFromJson(jsonString));
-    }
-    else{
+    } else {
       throw CacheException();
     }
-
   }
 
   @override
   Future<void> cacheListItems(ListItemsDataModel itemsToCache) {
-    return null;
+    return sharedPreferences.setString(
+      cachedItems,
+      listItemsDataModelToJson(itemsToCache),
+    );
   }
 }

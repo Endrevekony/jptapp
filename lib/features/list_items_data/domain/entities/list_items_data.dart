@@ -3,7 +3,7 @@ import 'package:meta/meta.dart';
 
 class ListItemsData extends Equatable {
   final List<ItemData> listData;
-  ListItemsData({
+  const ListItemsData({
     @required this.listData
   });
 
@@ -16,7 +16,7 @@ class ItemData extends Equatable {
   final List<PdfLinks> pdfLinks;
   final String title;
 
-  ItemData({
+  const ItemData({
     @required this.htmlTags,
     @required this.pdfLinks,
     @required this.title,
@@ -30,7 +30,7 @@ class HtmlTags extends Equatable {
   final String html;
   final String title;
 
-  HtmlTags({
+  const HtmlTags({
     @required this.html,
     @required this.title,
   });
@@ -43,7 +43,7 @@ class PdfLinks extends Equatable {
   final String link;
   final String title;
 
-  PdfLinks({
+  const PdfLinks({
     @required this.link,
     @required this.title,
   });

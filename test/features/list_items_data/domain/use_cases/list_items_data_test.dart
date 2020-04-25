@@ -17,8 +17,8 @@ void main() {
     usecase = GetItemListData(mockItemListDataRepository);
   });
 
-  final tPdfLinks = [PdfLinks(title: 'cim', link: 'link')];
-  final tHtmlTags = [HtmlTags(title: 'tag', html: 'html')];
+  final tPdfLinks = [const PdfLinks(title: 'cim', link: 'link')];
+  final tHtmlTags = [const HtmlTags(title: 'tag', html: 'html')];
   final itemData = [
     ItemData(pdfLinks: tPdfLinks, htmlTags: tHtmlTags, title: 'valami')
   ];

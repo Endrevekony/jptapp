@@ -1,10 +1,11 @@
+import 'dart:convert';
 import 'package:jptapp/features/list_items_data/domain/entities/list_items_data.dart';
 import 'package:meta/meta.dart';
 import 'package:flutter/foundation.dart';
-import 'dart:convert';
+
 
 ListItemsDataModel listItemsDataModelFromJson(String str) =>
- ListItemsDataModel(itemDataList: List<ItemDataListModel>.from(json.decode(str).map((x)=> 
+ ListItemsDataModel(itemDataList: List<ItemDataListModel>.from(jsonDecode(str).map((x)=>
  ItemDataListModel.fromJson(x))));
 
 
@@ -12,7 +13,7 @@ String listItemsDataModelToJson(ListItemsDataModel model) =>
 json.encode(List<dynamic>.from(model.itemDataList.map((x)=> x.toJson())));
 class ListItemsDataModel extends ListItemsData {
   final List<ItemDataListModel> itemDataList;
-  ListItemsDataModel({@required this.itemDataList})
+  const ListItemsDataModel({@required this.itemDataList})
       : super(listData: itemDataList);
 }
 
@@ -20,7 +21,7 @@ class ItemDataListModel extends ItemData {
   final List<HtmlTagModel> htmlTags;
   final List<PdfLinkModel> pdfLinks;
   final String title;
-  ItemDataListModel({
+  const ItemDataListModel({
     @required this.htmlTags,
     @required this.pdfLinks,
     @required this.title,
@@ -35,7 +36,7 @@ class ItemDataListModel extends ItemData {
             ? null
             : List<PdfLinkModel>.from(
                 json["pdfLinks"].map((x) => PdfLinkModel.fromJson(x))),
-        title: json["title"] == null ? null : json["title"],
+        title: json["title"] ?? json["title"],
       );
 
       Map<String, dynamic> toJson() => {
@@ -45,12 +46,12 @@ class ItemDataListModel extends ItemData {
         "pdfLinks": pdfLinks == null
             ? null
             : List<dynamic>.from(pdfLinks.map((x) => x.toJson())),
-        "title": title == null ? null : title,
+        "title": title ?? title,
       };
 }
 
 class HtmlTagModel extends HtmlTags {
-  HtmlTagModel({
+  const HtmlTagModel({
     @required String html,
     @required String title,
   }) : super(html: html, title: title);
@@ -67,7 +68,7 @@ class HtmlTagModel extends HtmlTags {
 }
 
 class PdfLinkModel extends PdfLinks {
-  PdfLinkModel({
+  const PdfLinkModel({
     @required String link,
     @required String title,
   }) : super(link: link, title: title);
@@ -82,18 +83,3 @@ class PdfLinkModel extends PdfLinks {
     "title": title,
   };
 }
-
-/*
-
-      factory ItemDataModel.fromJson(Map<String, dynamic> json) => ItemDataModel(
-        htmlTags: json["htmlTags"] == null
-            ? null
-            : List<HtmlTagModel>.from(
-                json["htmlTags"].map((x) => HtmlTagModel.fromJson(x))),
-        pdfLinks: json["pdfLinks"] == null
-            ? null
-            : List<PdfLinkModel>.from(
-                json["pdfLinks"].map((x) => PdfLinkModel.fromJson(x))),
-        title: json["title"] == null ? null : json["title"],
-      );
-      */

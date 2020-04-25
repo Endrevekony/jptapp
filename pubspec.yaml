@@ -19,6 +19,8 @@ dependencies:
   dartz: ^0.8.9
   # Remote API
   data_connection_checker: ^0.3.4
+  #Rive animations
+  flare_flutter: ^2.0.3
   #Injectable
   injectable: ^0.3.0
   #http
@@ -27,11 +29,8 @@ dependencies:
   uuid: ^2.0.4
   # Local cache
   shared_preferences: ^0.5.7
-  #User Authentication
+  #Firebase
   firebase_auth: ^0.16.0
-  #Rive animations
-  flare_flutter: ^2.0.3
-  #Firebase core
   firebase_core: ^0.4.4+3
   #Freezed unions
   freezed_annotation: ^0.7.1
@@ -44,9 +43,10 @@ dev_dependencies:
     sdk: flutter
 
   mockito: ^4.1.1
-  freezed: ^0.10.6
-  build_runner: ^1.8.1
+  freezed: ^0.10.7
+  build_runner: ^1.9.0
   injectable_generator: ^0.3.4
+  lint: ^1.1.1
 
 flutter:
   uses-material-design: true

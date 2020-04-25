@@ -13,8 +13,8 @@ part 'list_items_state.dart';
 
 
 class ListItemsBloc extends Bloc<ListItemsEvent, ListItemsState> {
-    static const String SERVER_FAILURE_MESSAGE = 'Server Failure';
-  static const String CACHE_FAILURE_MESSAGE = 'Cache Failure';
+  static const String serverFailureMessage = 'Server Failure';
+  static const String cacheFailureMessage= 'Cache Failure';
 
   final GetItemListData getItemDataList;
   ListItemsBloc({
@@ -27,32 +27,37 @@ class ListItemsBloc extends Bloc<ListItemsEvent, ListItemsState> {
 
   @override
   Stream<ListItemsState> mapEventToState(
-    ListItemsEvent event,
-  ) async* {
+      ListItemsEvent event,
+      ) async* {
     if (event is GetDataListForItems) {
+      //////////////////////////////////////////////////////////////////
+
+
       yield Loading();
       final failureOrNot = await getItemDataList(NoParams());
       yield* _eitherLoadedOrErrorState(failureOrNot);
     }
   }
-}
+  ///////////////////////
 
-Stream<ListItemsState> _eitherLoadedOrErrorState(
-  Either<Failure, ListItemsData> either,
-) async* {
-  yield either.fold(
-    (failure) => Error(message: _mapFailureToMessage(failure)),
-    (itemDataList) => Loaded(itemDataList: itemDataList),
-  );
-}
+  ///////
+  Stream<ListItemsState> _eitherLoadedOrErrorState(
+      Either<Failure, ListItemsData> either,
+      ) async* {
+    yield either.fold(
+          (failure) => Error(message: _mapFailureToMessage(failure)),
+          (itemDataList) => Loaded(itemDataList: itemDataList),
+    );
+  }
 
-String _mapFailureToMessage(Failure failure) {
-  switch (failure.runtimeType) {
-    case ServerFailure:
-      return 'Server Error';
-    case CacheFailure:
-      return 'Cache Error';
-    default:
-      return 'Unexpected Error';
+  String _mapFailureToMessage(Failure failure) {
+    switch (failure.runtimeType) {
+      case ServerFailure:
+        return serverFailureMessage;
+      case CacheFailure:
+        return cacheFailureMessage;
+      default:
+        return 'Unexpected Error';
+    }
   }
 }

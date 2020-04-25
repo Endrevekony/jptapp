@@ -53,8 +53,8 @@ void main() {
   });
 
   group('getItemDataList', () {
-    final pdfLinks = [PdfLinkModel(title: 'title', link: 'links')];
-    final testHtml = [HtmlTagModel(title: 'tags', html: 'htmlCode')];
+    final pdfLinks = [const PdfLinkModel(title: 'title', link: 'links')];
+    final testHtml = [const HtmlTagModel(title: 'tags', html: 'htmlCode')];
     final itemData = [
       ItemDataListModel(pdfLinks: pdfLinks, htmlTags: testHtml, title: 'title')
     ];

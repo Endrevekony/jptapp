@@ -7,7 +7,7 @@ import '../../../../injection_container.dart';
 
 class LoginPage extends StatefulWidget {
   @override
-  _LoginPageState createState() => new _LoginPageState();
+  _LoginPageState createState() => _LoginPageState();
 }
 
 class _LoginPageState extends State<LoginPage> {
@@ -15,7 +15,7 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body:BlocProvider(
-        create: (context) => getIt<SignInFormBloc>(),
+        create: (context) => sl<SignInFormBloc>(),
         child: SignInForm(),
       ),
     );

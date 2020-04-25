@@ -6,8 +6,8 @@ import 'package:jptapp/features/list_items_data/domain/entities/list_items_data.
 import '../../../../core/fixtures/fixture_reader.dart';
 
 void main() {
-  final pdfLinks = [PdfLinkModel(title: 'title', link: 'link')];
-  final testHtml = [HtmlTagModel(title: 'title', html: 'htmlCode')];
+  final pdfLinks = [const PdfLinkModel(title: 'title', link: 'link')];
+  final testHtml = [const HtmlTagModel(title: 'title', html: 'htmlCode')];
   final itemData = [
     ItemDataListModel(pdfLinks: pdfLinks, htmlTags: testHtml, title: 'title'),
     ItemDataListModel(pdfLinks: pdfLinks, htmlTags: testHtml, title: 'title')

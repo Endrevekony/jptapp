@@ -8,7 +8,8 @@ class GetItemListData extends UseCase<ListItemsData, NoParams> {
   final ListItemsDataRepository repository;
   GetItemListData(this.repository);
 
-  Future<Either<Failure, ListItemsData>> call(NoParams params) async {
-    return await repository.getListItemData();
+  @override
+  Future<Either<Failure, ListItemsData>> call(NoParams params) {
+    return repository.getListItemData();
   }
 }

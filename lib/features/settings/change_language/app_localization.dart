@@ -1,17 +1,17 @@
 import 'dart:async';
 import 'dart:convert';
 import 'dart:ui';
-
+import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-const String _storageKey = "MyApplication_";
+const _storageKey = "MyApplication_";
 const List<String> _supportedLanguages = ['en','hu','rs'];
 Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
 
 class GlobalTranslations {
   Locale _locale;
-  Map<dynamic, dynamic> _localizedValues;
+  Map<String, dynamic> _localizedValues;
   VoidCallback _onLocaleChangedCallback;
 
 
@@ -31,25 +31,23 @@ class GlobalTranslations {
     return null;
   }
 
-  getPreferredLanguage() async {
+  Future<String> getPreferredLanguage() async {
     return _getApplicationSavedInformation('language');
   }
-  setPreferredLanguage(String lang) async {
+  Future<bool> setPreferredLanguage(String lang) async {
     return _setApplicationSavedInformation('language', lang);
   }
 
   Future<Null> setNewLanguage([String newLanguage, bool saveInPrefs = false]) async {
     String language = newLanguage;
-    if (language == null){
-      language = await getPreferredLanguage();
-    }
+    language ??= await getPreferredLanguage();
 
     if (language == ""){
       language = "en";
     }
     _locale = Locale(language, "");
 
-    String jsonContent = await rootBundle.loadString(
+    final String jsonContent = await rootBundle.loadString(
         "lang/${_locale.languageCode}.json");
     _localizedValues = jsonDecode(jsonContent);
 

@@ -20,8 +20,8 @@ void main() {
       dataSource = ListItemsLocalDataSourceImpl(sharedPreferences: mockSharedPreferences);
   });
 
-    final pdfLinks = [PdfLinkModel(title: 'title', link: 'link')];
-    final testHtml = [HtmlTagModel(title: 'title', html: 'htmlCode')];
+    final pdfLinks = [const PdfLinkModel(title: 'title', link: 'link')];
+    final testHtml = [const HtmlTagModel(title: 'title', html: 'htmlCode')];
     final itemData = [
     ItemDataListModel(pdfLinks: pdfLinks, htmlTags: testHtml, title: 'title'),
     ItemDataListModel(pdfLinks: pdfLinks, htmlTags: testHtml, title: 'title')
@@ -38,7 +38,7 @@ void main() {
       test('should throw CacheException if there is no cache', () async {
         when(mockSharedPreferences.getString(any)).thenReturn(null);
         final call = dataSource.getLastListItems;
-        expect(() => call(), throwsA(TypeMatcher<CacheException>()));
+        expect(() => call(), throwsA(const TypeMatcher<CacheException>()));
       });
   });
 }

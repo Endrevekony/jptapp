@@ -8,6 +8,7 @@ import 'package:jptapp/features/list_items_data/presentation/bloc/bloc/list_item
 import 'package:mockito/mockito.dart';
 
 class MockGetListItems extends Mock implements GetItemListData {}
+
 void main() {
   ListItemsBloc bloc;
   MockGetListItems mockGetListItems;
@@ -16,12 +17,12 @@ void main() {
     mockGetListItems = MockGetListItems();
 
     bloc = ListItemsBloc(
-       getItemDataList: mockGetListItems,
+      getItemDataList: mockGetListItems,
     );
   });
 
-  final tPdfLinks = [PdfLinks(title: 'cim', link: 'link')];
-  final tHtmlTags = [HtmlTags(title: 'tag', html: 'html')];
+  final tPdfLinks = [const PdfLinks(title: 'cim', link: 'link')];
+  final tHtmlTags = [const HtmlTags(title: 'tag', html: 'html')];
   final itemData = [
     ItemData(pdfLinks: tPdfLinks, htmlTags: tHtmlTags, title: 'valami')
   ];
@@ -31,78 +32,78 @@ void main() {
     expect(bloc.initialState, equals(NoData()));
   });
 
-  test('should get data from the use case', () async {
+  test('should get data from the use case', () async {});
 
-  });
+  group(
+    'GetListItems',
+    () {
+      test(
+        'should get data from the use case',
+        () async {
+          // arrange
+          when(mockGetListItems(any))
+              .thenAnswer((_) async => Right(tItemDataList));
+          // act
+          bloc.add(GetDataListForItems());
+          await untilCalled(mockGetListItems(any));
+          // assert
+          verify(mockGetListItems(NoParams()));
+        },
+      );
 
-  group('GetListItems', () {
+      test(
+        'should emit [Loading, Loaded] when data is gotten successfully',
+        () async {
+          // arrange
+          when(mockGetListItems(any))
+              .thenAnswer((_) async => Right(tItemDataList));
+          // assert later
+          final expected = [
+            NoData(),
+            Loading(),
+            Loaded(itemDataList: tItemDataList),
+          ];
+          expectLater(bloc, emitsInOrder(expected));
+          // act
+          bloc.add(GetDataListForItems());
+        },
+      );
 
-  test(
-    'should get data from the use case',
-    () async {
-      // arrange
-      when(mockGetListItems(any))
-          .thenAnswer((_) async => Right(tItemDataList));
-      // act
-      bloc.add(GetDataListForItems());
-      await untilCalled(mockGetListItems(any));
-      // assert
-      verify(mockGetListItems(NoParams()));
+      test(
+        'should emit [Loading, Error] when getting data fails',
+        () async {
+          // arrange
+          when(mockGetListItems(any))
+              .thenAnswer((_) async => Left(ServerFailure()));
+          // assert later
+          final expected = [
+            NoData(),
+            Loading(),
+            Error(message: ListItemsBloc.serverFailureMessage),
+          ];
+          expectLater(bloc, emitsInOrder(expected));
+          // act
+          bloc.add(GetDataListForItems());
+        },
+      );
+
+      test(
+        'should emit [Loading, Error] with a proper message for the error when getting data fails',
+        () async {
+          // arrange
+          when(mockGetListItems(any))
+              .thenAnswer((_) async => Left(CacheFailure()));
+          // assert later
+          final expected = [
+            NoData(),
+            Loading(),
+            Error(message: ListItemsBloc.cacheFailureMessage),
+          ];
+          expectLater(bloc, emitsInOrder(expected));
+          // act
+          bloc.add(GetDataListForItems());
+        },
+      );
     },
   );
-
-  test(
-    'should emit [Loading, Loaded] when data is gotten successfully',
-    () async {
-      // arrange
-      when(mockGetListItems(any))
-          .thenAnswer((_) async => Right(tItemDataList));
-      // assert later
-      final expected = [
-        NoData(),
-        Loading(),
-        Loaded(itemDataList: tItemDataList),
-      ];
-      expectLater(bloc, emitsInOrder(expected));
-      // act
-      bloc.add(GetDataListForItems());
-    },
-  );
-
-  test(
-    'should emit [Loading, Error] when getting data fails',
-    () async {
-      // arrange
-      when(mockGetListItems(any))
-          .thenAnswer((_) async => Left(ServerFailure()));
-      // assert later
-      final expected = [
-        NoData(),
-        Loading(),
-        Error(message: ListItemsBloc.SERVER_FAILURE_MESSAGE),
-      ];
-      expectLater(bloc, emitsInOrder(expected));
-      // act
-      bloc.add(GetDataListForItems());
-    },
-  );
-
-  test(
-    'should emit [Loading, Error] with a proper message for the error when getting data fails',
-    () async {
-      // arrange
-      when(mockGetListItems(any))
-          .thenAnswer((_) async => Left(CacheFailure()));
-      // assert later
-      final expected = [
-        NoData(),
-        Loading(),
-        Error(message: ListItemsBloc.CACHE_FAILURE_MESSAGE),
-      ];
-      expectLater(bloc, emitsInOrder(expected));
-      // act
-      bloc.add(GetDataListForItems());
-    },
-  );
-});
 }
