@@ -2,11 +2,11 @@ import 'dart:async';
 import 'package:dartz/dartz.dart';
 import 'package:jptapp/core/errors/failures.dart';
 import 'package:jptapp/core/use_cases/usecase.dart';
+import 'package:jptapp/features/list_items_data/data/models/list_items_data_model.dart';
 import 'package:jptapp/features/list_items_data/domain/use_cases/get_list_items_data.dart';
 import 'package:meta/meta.dart';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:jptapp/features/list_items_data/domain/entities/list_items_data.dart';
 
 part 'list_items_event.dart';
 part 'list_items_state.dart';
@@ -36,7 +36,7 @@ class ListItemsBloc extends Bloc<ListItemsEvent, ListItemsState> {
     }
   }
   Stream<ListItemsState> _eitherLoadedOrErrorState(
-      Either<Failure, ListItemsData> either,
+      Either<Failure, Map<String, ItemDataModel>> either,
       ) async* {
     yield either.fold(
           (failure) => Error(message: _mapFailureToMessage(failure)),

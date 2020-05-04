@@ -9,6 +9,7 @@ class LoginPageAnimation extends StatelessWidget {
         width: 250.0,
         child: FlareActor("assets/intro.flr",
             alignment: Alignment.center,
+            shouldClip: false,
             fit: BoxFit.contain,
             animation: "coding"),);
   }

@@ -2,6 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:jptapp/core/errors/failures.dart';
 import 'package:jptapp/core/use_cases/usecase.dart';
+import 'package:jptapp/features/list_items_data/data/models/list_items_data_model.dart';
 import 'package:jptapp/features/list_items_data/domain/entities/list_items_data.dart';
 import 'package:jptapp/features/list_items_data/domain/use_cases/get_list_items_data.dart';
 import 'package:jptapp/features/list_items_data/presentation/bloc/bloc/list_items_bloc.dart';
@@ -23,10 +24,11 @@ void main() {
 
   final tPdfLinks = [const PdfLinks(title: 'cim', link: 'link')];
   final tHtmlTags = [const HtmlTags(title: 'tag', html: 'html')];
-  final itemData = [
-    ItemData(pdfLinks: tPdfLinks, htmlTags: tHtmlTags, title: 'valami')
-  ];
-  final tItemDataList = ListItemsData(listData: itemData);
+  final itemData = ItemData(pdfLinks: tPdfLinks, htmlTags: tHtmlTags, title: 'valami');
+  final Map<String, ItemDataModel> tItemDataList = {
+    'id' : itemData,
+  };
+
   test('initialState should be Empty', () {
     // assert
     expect(bloc.initialState, equals(NoData()));

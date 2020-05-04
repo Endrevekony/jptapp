@@ -4,8 +4,8 @@ import 'package:jptapp/core/errors/failures.dart';
 import 'package:jptapp/core/platform/network_info.dart';
 import 'package:jptapp/features/list_items_data/data/datasources/list_items_local_data_source.dart';
 import 'package:jptapp/features/list_items_data/data/datasources/list_items_remote_data_source.dart';
+import 'package:jptapp/features/list_items_data/data/models/list_items_data_model.dart';
 import 'package:meta/meta.dart';
-import 'package:jptapp/features/list_items_data/domain/entities/list_items_data.dart';
 import 'package:jptapp/features/list_items_data/domain/repositories/list_items_data_repository.dart';
 
 class ListItemDataRepositoryImpl implements ListItemsDataRepository {
@@ -20,7 +20,7 @@ class ListItemDataRepositoryImpl implements ListItemsDataRepository {
   });
 
   @override
-  Future<Either<Failure, ListItemsData>> getListItemData() async {
+  Future<Either<Failure, Map<String, ItemDataModel>>> getListItemData() async {
     if (await networkInfo.isConnected) {
       try {
         final remoteData = await remoteDataSource.getListItemData();

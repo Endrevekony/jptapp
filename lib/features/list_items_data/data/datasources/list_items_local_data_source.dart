@@ -4,8 +4,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:jptapp/features/list_items_data/data/models/list_items_data_model.dart';
 
 abstract class ListItemsLocalDataSource {
-  Future<ListItemsDataModel> getLastListItems();
-  Future<void> cacheListItems(ListItemsDataModel itemsToCache);
+  Future<Map<String, ItemDataModel>> getLastListItems();
+  Future<void> cacheListItems(Map<String, ItemDataModel> itemsToCache);
 }
 
 const cachedItems = 'CACHED_ITEMS';
@@ -16,7 +16,7 @@ class ListItemsLocalDataSourceImpl implements ListItemsLocalDataSource {
   ListItemsLocalDataSourceImpl({@required this.sharedPreferences});
 
   @override
-  Future<ListItemsDataModel> getLastListItems() {
+  Future<Map<String, ItemDataModel>> getLastListItems() {
     final jsonString = sharedPreferences.getString(cachedItems);
     if (jsonString != null) {
       return Future.value(listItemsDataModelFromJson(jsonString));
@@ -26,7 +26,7 @@ class ListItemsLocalDataSourceImpl implements ListItemsLocalDataSource {
   }
 
   @override
-  Future<void> cacheListItems(ListItemsDataModel itemsToCache) {
+  Future<void> cacheListItems(Map<String, ItemDataModel> itemsToCache) {
     return sharedPreferences.setString(
       cachedItems,
       listItemsDataModelToJson(itemsToCache),

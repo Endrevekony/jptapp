@@ -15,7 +15,7 @@ class Settings extends StatefulWidget {
 class _SettingsState extends State<Settings> {
   void changeLanguage({@required String lang}) {
     setState(
-          () async {
+      () async {
         await allTranslations.setNewLanguage(lang);
         Navigator.pushReplacement(
           context,
@@ -25,13 +25,14 @@ class _SettingsState extends State<Settings> {
     );
   }
 
-  Widget selectedLanguageCheck(String current){
+  Widget selectedLanguageCheck(String current) {
     if (allTranslations.currentLanguage == current) {
       return Icon(Icons.check);
-    }else{
+    } else {
       return null;
     }
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -62,7 +63,7 @@ class _SettingsState extends State<Settings> {
                       onTap: () {
                         BlocProvider.of<ThemeBloc>(context)
                             .add(const ThemeChanged(theme: AppTheme.light));
-                            selectedDark = false;
+                        selectedDark = false;
                       },
                     ),
                     ListTile(

@@ -11,7 +11,7 @@ class NoData extends ListItemsState {}
 class Loading extends ListItemsState {}
 
 class Loaded extends ListItemsState {
-  final ListItemsData itemDataList;
+  final Map<String, ItemDataModel> itemDataList;
   Loaded({@required this.itemDataList});
   @override
   List<Object> get props => [itemDataList];

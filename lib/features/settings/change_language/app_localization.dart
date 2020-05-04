@@ -24,11 +24,11 @@ class GlobalTranslations {
 
   get currentLanguage => _locale == null ? '' : _locale.languageCode;
   get locale => _locale;
-  Future<Null> init([String language]) async {
+  Future<void> init([String language]) async {
     if (_locale == null){
       await setNewLanguage(language);
     }
-    return null;
+
   }
 
   Future<String> getPreferredLanguage() async {
@@ -38,7 +38,7 @@ class GlobalTranslations {
     return _setApplicationSavedInformation('language', lang);
   }
 
-  Future<Null> setNewLanguage([String newLanguage, bool saveInPrefs = false]) async {
+  Future<void> setNewLanguage([String newLanguage,]) async {
     String language = newLanguage;
     language ??= await getPreferredLanguage();
 
@@ -51,17 +51,14 @@ class GlobalTranslations {
         "lang/${_locale.languageCode}.json");
     _localizedValues = jsonDecode(jsonContent);
 
-    if (saveInPrefs){
-      await setPreferredLanguage(language);
-    }
+
 
     if (_onLocaleChangedCallback != null){
       _onLocaleChangedCallback();
     }
 
-    return null;
   }
-  set onLocaleChangedCallback(VoidCallback callback){
+  onLocaleChangedCallback(VoidCallback callback){
     _onLocaleChangedCallback = callback;
   }
 

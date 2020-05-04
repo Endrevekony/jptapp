@@ -97,7 +97,7 @@ class SignInForm extends StatelessWidget {
               Center(
                   child: Text(
                 errorMessage,
-                style: TextStyle(color: MyColors.errorMessage),
+                style: const TextStyle(color: MyColors.errorMessage),
               )),
               RaisedButton(
                 shape: RoundedRectangleBorder(

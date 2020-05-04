@@ -44,7 +44,7 @@ group('getListItemsData', () {
       dataSource.getListItemData();
       // assert
       verify(mockHttpClient.get(
-        'https://jpt-app.firebaseio.com/',
+        'https://jpt-app.firebaseio.com/.json',
         headers: {'Content-Type': 'application/json'},
       ));
     },

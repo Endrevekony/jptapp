@@ -1,16 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:meta/meta.dart';
 
-class ListItemsData extends Equatable {
-  final List<ItemData> listData;
-  const ListItemsData({
-    @required this.listData
-  });
-
-  @override
-  List<Object> get props => [listData];
-}
-
 class ItemData extends Equatable {
   final List<HtmlTags> htmlTags;
   final List<PdfLinks> pdfLinks;

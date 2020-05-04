@@ -20,22 +20,21 @@ void main() {
       dataSource = ListItemsLocalDataSourceImpl(sharedPreferences: mockSharedPreferences);
   });
 
-    final pdfLinks = [const PdfLinkModel(title: 'title', link: 'link')];
-    final testHtml = [const HtmlTagModel(title: 'title', html: 'htmlCode')];
-    final itemData = [
-    ItemDataListModel(pdfLinks: pdfLinks, htmlTags: testHtml, title: 'title'),
-    ItemDataListModel(pdfLinks: pdfLinks, htmlTags: testHtml, title: 'title')
-  ];
-  final tListItemDataModel = ListItemsDataModel(itemDataList: itemData);
+  final tPdfLinks = [const PdfLinkModel(title: 'cim', link: 'link')];
+  final tHtmlTags = [const HtmlTagModel(title: 'tag', html: 'html')];
+  final itemData = ItemDataModel(pdfLinks: tPdfLinks, htmlTags: tHtmlTags, title: 'title');
+  final Map<String, ItemDataModel> tItemDataList = {
+    'id' : itemData
+  };
 
   group('getLastItems', () {
-         test('should return items from shared preferences when there are in the cache', () async {
+    test('should return items from shared preferences when there are in the cache', () async {
         when(mockSharedPreferences.getString(any)).thenReturn(fixture('items.json'));
         final result = await dataSource.getLastListItems();
         verify(mockSharedPreferences.getString(cachedItems));
-        expect(result, equals(tListItemDataModel));
+        expect(result, equals(tItemDataList));
       });
-      test('should throw CacheException if there is no cache', () async {
+    test('should throw CacheException if there is no cache', () async {
         when(mockSharedPreferences.getString(any)).thenReturn(null);
         final call = dataSource.getLastListItems;
         expect(() => call(), throwsA(const TypeMatcher<CacheException>()));
