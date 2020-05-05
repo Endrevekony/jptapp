@@ -43,7 +43,7 @@ class _MyAppState extends State<MyApp> {
               GlobalWidgetsLocalizations.delegate,
             ],
             supportedLocales: allTranslations.supportedLocales(),
-            home: ListItemsPage(),
+            home: LoginPage(),
           );
         },
       ),
