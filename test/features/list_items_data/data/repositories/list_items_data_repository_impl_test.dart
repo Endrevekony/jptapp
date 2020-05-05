@@ -55,10 +55,9 @@ void main() {
   group('getItemDataList', () {
     final pdfLinks = [const PdfLinkModel(title: 'title', link: 'links')];
     final testHtml = [const HtmlTagModel(title: 'tags', html: 'htmlCode')];
-    final itemData = ItemDataModel(pdfLinks: pdfLinks, htmlTags: testHtml, title: 'title');
-    final Map<String, ItemDataModel> tItemDataList = {
-      'id' : itemData
-    };
+    final itemData =
+        ItemDataModel(pdfLinks: pdfLinks, htmlTags: testHtml, title: 'title');
+    final Map<String, ItemDataModel> tItemDataList = {'id': itemData};
 
     test('should check if the device is online', () async {
       when(mockNetworkInfo.isConnected).thenAnswer((_) async => true);

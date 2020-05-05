@@ -8,7 +8,6 @@ import 'package:mockito/mockito.dart';
 
 import '../../../../core/fixtures/fixture_reader.dart';
 
-
 class MockHttpClient extends Mock implements http.Client {}
 
 void main() {
@@ -18,7 +17,6 @@ void main() {
   setUp(() {
     mockHttpClient = MockHttpClient();
     dataSource = ListItemsRemoteDataSourceImpl(client: mockHttpClient);
-    
   });
   final tListItemsModel = listItemsDataModelFromJson(fixture('items.json'));
 
@@ -33,45 +31,45 @@ void main() {
       (_) async => http.Response('Something went wrong', 404),
     );
   }
-group('getListItemsData', () {
 
-  test(
-    'should preform a GET request on a URL',
-    () {
-      //arrange
-      setUpMockHttpClientSuccess200();
-      // act
-      dataSource.getListItemData();
-      // assert
-      verify(mockHttpClient.get(
-        'https://jpt-app.firebaseio.com/.json',
-        headers: {'Content-Type': 'application/json'},
-      ));
-    },
-  );
+  group('getListItemsData', () {
+    test(
+      'should preform a GET request on a URL',
+      () {
+        //arrange
+        setUpMockHttpClientSuccess200();
+        // act
+        dataSource.getListItemData();
+        // assert
+        verify(mockHttpClient.get(
+          'https://jpt-app.firebaseio.com/.json',
+          headers: {'Content-Type': 'application/json'},
+        ));
+      },
+    );
 
-  test(
-    'should return ListItem when the response code is 200 (success)',
-    () async {
-      // arrange
-      setUpMockHttpClientSuccess200();
-      // act
-      final result = await dataSource.getListItemData();
-      // assert
-      expect(result, equals(tListItemsModel));
-    },
-  );
+    test(
+      'should return ListItem when the response code is 200 (success)',
+      () async {
+        // arrange
+        setUpMockHttpClientSuccess200();
+        // act
+        final result = await dataSource.getListItemData();
+        // assert
+        expect(result, equals(tListItemsModel));
+      },
+    );
 
-  test(
-    'should throw a ServerException when the response code is 404 or other',
-    () async {
-      // arrange
-      setUpMockHttpClientFailure404();
-      // act
-      final call = dataSource.getListItemData();
-      // assert
-      expect(() => call, throwsA(const TypeMatcher<ServerException>()));
-    },
-  );
-});
+    test(
+      'should throw a ServerException when the response code is 404 or other',
+      () async {
+        // arrange
+        setUpMockHttpClientFailure404();
+        // act
+        final call = dataSource.getListItemData();
+        // assert
+        expect(() => call, throwsA(const TypeMatcher<ServerException>()));
+      },
+    );
+  });
 }

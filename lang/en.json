@@ -9,5 +9,6 @@
   "dark": "Dark",
   "light": "Light",
   "short_password" : "Short Password",
-  "invalid_email" : "Invalid email"
+  "invalid_email" : "Invalid email",
+  "scan" : "Scan QR code"
 }

@@ -24,9 +24,10 @@ void main() {
 
   final tPdfLinks = [const PdfLinks(title: 'cim', link: 'link')];
   final tHtmlTags = [const HtmlTags(title: 'tag', html: 'html')];
-  final itemData = ItemData(pdfLinks: tPdfLinks, htmlTags: tHtmlTags, title: 'valami');
+  final itemData =
+      ItemData(pdfLinks: tPdfLinks, htmlTags: tHtmlTags, title: 'valami');
   final Map<String, ItemDataModel> tItemDataList = {
-    'id' : itemData,
+    'id': itemData,
   };
 
   test('initialState should be Empty', () {

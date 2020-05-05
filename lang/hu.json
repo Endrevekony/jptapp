@@ -9,5 +9,6 @@
   "dark": "Sötét",
   "light": "Világos",
   "short_password" : "Túl rövid jelszó",
-  "invalid_email" : "Invalid e-mail cim"
+  "invalid_email" : "Invalid e-mail cim",
+  "scan" : "Szkennelje be a QR kódot"
 }

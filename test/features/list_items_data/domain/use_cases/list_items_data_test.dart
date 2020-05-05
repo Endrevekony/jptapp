@@ -19,10 +19,9 @@ void main() {
 
   final tPdfLinks = [const PdfLinkModel(title: 'cim', link: 'link')];
   final tHtmlTags = [const HtmlTagModel(title: 'tag', html: 'html')];
-  final itemData = ItemDataModel(pdfLinks: tPdfLinks, htmlTags: tHtmlTags, title: 'title');
-  final Map<String, ItemDataModel> tItemDataList = {
-    'id' : itemData
-  };
+  final itemData =
+      ItemDataModel(pdfLinks: tPdfLinks, htmlTags: tHtmlTags, title: 'title');
+  final Map<String, ItemDataModel> tItemDataList = {'id': itemData};
 
   test('should get the list data from the repository', () async {
     when(mockItemListDataRepository.getListItemData())

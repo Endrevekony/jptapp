@@ -19,56 +19,51 @@ import 'features/open_item/domain/repositories/opened_item_repository.dart';
 import 'features/open_item/domain/usecases/get_opened_item.dart';
 import 'injection_container.iconfig.dart';
 
-
 final GetIt sl = GetIt.instance;
 
 Future<void> init() async {
   // Bloc
   sl.registerFactory(
-        () =>
-        ListItemsBloc(
-          getItemDataList: sl(),
-        ),
+    () => ListItemsBloc(
+      getItemDataList: sl(),
+    ),
   );
   sl.registerFactory(
-        () =>
-        PdfBloc(
-          getPdfData: sl(),
-        ),
+    () => PdfBloc(
+      getPdfData: sl(),
+    ),
   );
   // Use cases
   sl.registerLazySingleton(() => GetItemListData(sl()));
   sl.registerLazySingleton(() => GetPdfData(sl()));
   // Repository
   sl.registerLazySingleton<ListItemsDataRepository>(
-        () =>
-        ListItemDataRepositoryImpl(
-          localDataSource: sl(),
-          networkInfo: sl(),
-          remoteDataSource: sl(),
-        ),
+    () => ListItemDataRepositoryImpl(
+      localDataSource: sl(),
+      networkInfo: sl(),
+      remoteDataSource: sl(),
+    ),
   );
   sl.registerLazySingleton<OpenedItemRepository>(
-        () =>
-            OpenedItemRepositoryImpl(
-          localDataSource: sl(),
-          networkInfo: sl(),
-          remoteDataSource: sl(),
-        ),
+    () => OpenedItemRepositoryImpl(
+      localDataSource: sl(),
+      networkInfo: sl(),
+      remoteDataSource: sl(),
+    ),
   );
   // Data sources
   sl.registerLazySingleton<ListItemsRemoteDataSource>(
-        () => ListItemsRemoteDataSourceImpl(client: sl()),
+    () => ListItemsRemoteDataSourceImpl(client: sl()),
   );
   sl.registerLazySingleton<OpenedItemRemoteDataSource>(
-        () => OpenedItemRemoteDataSourceImpl(url: sl()),
+    () => OpenedItemRemoteDataSourceImpl(),
   );
 
   sl.registerLazySingleton<ListItemsLocalDataSource>(
-        () => ListItemsLocalDataSourceImpl(sharedPreferences: sl()),
+    () => ListItemsLocalDataSourceImpl(sharedPreferences: sl()),
   );
   sl.registerLazySingleton<OpenedItemLocalDataSource>(
-        () => OpenedItemLocalDataSourceImpl(sharedPreferences: sl()),
+    () => OpenedItemLocalDataSourceImpl(sharedPreferences: sl()),
   );
   //! Core
   sl.registerLazySingleton<NetWorkInfo>(() => NetworkInfoImpl(sl()));

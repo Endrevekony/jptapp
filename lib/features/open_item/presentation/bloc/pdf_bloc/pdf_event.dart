@@ -1,6 +1,6 @@
-part of 'pdf_bloc.dart';
+import 'package:equatable/equatable.dart';
+import 'package:flutter/foundation.dart';
 
-@immutable
 abstract class PdfEvent extends Equatable {
   @override
   List<Object> get props => [];

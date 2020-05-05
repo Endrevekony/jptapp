@@ -9,5 +9,6 @@
   "dark": "Tamni",
   "light": "Svetli",
   "short_password" : "Kratka lozinka",
-  "invalid_email" : "Invalid e-mail adresa"
+  "invalid_email" : "Invalid e-mail adresa",
+  "scan" : "Skeniraj QR kod"
 }

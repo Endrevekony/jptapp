@@ -1,4 +1,6 @@
-part of 'pdf_bloc.dart';
+import 'package:equatable/equatable.dart';
+import 'package:flutter/foundation.dart';
+import 'package:flutter_plugin_pdf_viewer/flutter_plugin_pdf_viewer.dart';
 
 @immutable
 abstract class PdfState extends Equatable {
