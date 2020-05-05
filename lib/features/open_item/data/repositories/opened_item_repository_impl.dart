@@ -20,10 +20,11 @@ class OpenedItemRepositoryImpl implements OpenedItemRepository {
   });
 
   @override
-  Future<Either<Failure, PDFDocument>> getPdfData({@required String url}) async {
+  Future<Either<Failure, PDFDocument>> getPdfData(
+      {@required String url}) async {
     if (await networkInfo.isConnected) {
       try {
-        final remotePdf = await remoteDataSource.getPdfItem(url: url);
+        final remotePdf = await remoteDataSource.getPdfItem(url);
         //localDataSource.cachePdfItem(remotePdf);
         return Right(remotePdf);
       } on ServerException {

@@ -10,6 +10,8 @@ import 'package:jptapp/features/settings/change_language/app_localization.dart';
 import 'package:jptapp/features/settings/change_theme/bloc/bloc.dart';
 import 'package:jptapp/injection_container.dart' as di;
 
+import 'features/list_items_data/presentation/pages/list_items_page.dart';
+
 // ignore: avoid_void_async
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -41,7 +43,7 @@ class _MyAppState extends State<MyApp> {
               GlobalWidgetsLocalizations.delegate,
             ],
             supportedLocales: allTranslations.supportedLocales(),
-            home: LoginPage(),
+            home: ListItemsPage(),
           );
         },
       ),
